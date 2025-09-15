@@ -4,8 +4,10 @@
 
 def getCachorroLista():
     """Apresenta a lista completa dos cachorros disponiveis"""
-    with open("perfis.txt", 'r', newline='\n') as lista:
-        content = lista.read()
+    with open("perfis.txt", 'r') as lista:
+        content = []
+        for linha in lista:
+            content.append(linha.strip().split(';'))
         print(content)
 
 
