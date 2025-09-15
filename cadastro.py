@@ -1,10 +1,10 @@
-#estou usando alt+127 como separador nos aquivos ⌂
+#estou usando ; como separador nos aquivos 
 #template de perfil dos dog:
-#Nome⌂ID⌂Raça⌂Idade⌂Sexo⌂Extra
+#Nome;ID;Raça;Idade;Sexo;Extra
 
 def getCachorroLista():
     """Apresenta a lista completa dos cachorros disponiveis"""
-    with open("perfis.txt", 'r' ) as lista:
+    with open("perfis.txt", 'r', newline='\n') as lista:
         content = lista.read()
         print(content)
 
