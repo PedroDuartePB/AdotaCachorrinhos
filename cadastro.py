@@ -1,4 +1,4 @@
-def interface_principal():
+def interfacePrincipal():
     """
     Exibe o menu principal do programa de adoção.
     """
@@ -8,12 +8,31 @@ def interface_principal():
     print("|                                          |")
     print("|  Seu novo melhor amigo espera por você!  |")
     print("|                                          |")
-    print("|  [1] Ver cães disponíveis                |")
-    print("|  [2] Adotar um amigo                     |")
-    print("|  [3] Cadastrar novo cão                  |")
-    print("|  [4] Sair do programa                    |")
+    print("|  [1] Cadastro do Cão                     |")
+    print("|  [2] Adote um Amigo                      |")
+    print("|  [3] Remover um Cão                      |")
+    print("|  [4] Sair                                |")
     print("|                                          |")
     print("+------------------------------------------+")
 
     opcao = input("Digite o número da sua opção: ")
     return opcao
+
+
+def interfaceCaes():
+    return "oi"
+
+def interfaceCadastro():
+    return "oi"
+
+def interfaceSaida():
+    print("+------------------------------------------+")
+    print("|                                          |")
+    print("|      🐾 Obrigado por nos visitar! 🐾     |")
+    print("|                                          |")
+    print("|    Esperamos que encontre seu novo       |")
+    print("|      melhor amigo em breve.              |")
+    print("|                                          |")
+    print("+------------------------------------------+")
+
+interfacePrincipal()
