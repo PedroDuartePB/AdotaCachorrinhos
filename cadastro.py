@@ -1,4 +1,6 @@
 #estou usando alt+127 como separador nos aquivos ⌂
+#template de perfil dos dog:
+#Nome⌂ID⌂Raça⌂Idade⌂Sexo⌂Extra
 
 def getCachorroLista():
     """Apresenta a lista completa dos cachorros disponiveis"""
@@ -30,3 +32,4 @@ def alteraPerfil():
     with open("perfis.txt", 'r+' ) as data:
         data.read()
 
+getCachorroLista()
