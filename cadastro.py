@@ -49,5 +49,3 @@ def atualizarPerfil(id:int, dados:str):
 
         newData = newData.strip()
         lista[(id-1)].write(f"\n{generateId()};{newData}")
-
-cadastraNewCachorro({"nome":"Princesa", "raça":"pitbul", "idade":"2", "sexo":"F"})
