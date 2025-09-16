@@ -1,14 +1,15 @@
 #estou usando ; como separador nos aquivos 
 #template de perfil dos dog:
-#Nome;ID;Raça;Idade;Sexo;Extra
+#ID;Nome;Raça;Idade;Sexo
 
-def getCachorroLista(categoria):
-    """Apresenta a lista completa dos cachorros disponiveis"""
+
+def getDadosCachorro():
+    """Apresenta a lista completa dos cachorros disponiveis
+    ordenando atraves de categorias"""
     with open("perfis.txt", 'r') as lista:
         content = []
         for linha in lista:
             content.append(linha.strip().split(';'))
-        
         return content
 
 
@@ -17,22 +18,23 @@ def getCachorroPerfil():
     with open("perfis.txt", 'r' ) as lista:
         lista.readline()
 
-
-def cadastraCachorro():
-    """Adiciona um novo perfil a lista dos cachorros"""
-    with open("perfis.txt", 'a' ) as insert:
-        insert.write()
-
-
-def delCachorro():
-    """Exclui perfil da lista"""
-    with open("perfis.txt", 'w+' ) as exclui:
-        exclui.read()
+def generateId():
+    id = 0
+    with open("perfis.txt", "r") as lista:
+        for lines in lista:
+            id += 1
+    return id+1
 
 
-def alteraPerfil():
-    """Alteação de dados do cachorro."""
-    with open("perfis.txt", 'r+' ) as data:
-        data.read()
+def cadastraNewCachorro(newDog:list):
+    t = ''
+    if newDog:
+        for dado in newDog:
+            if dado == newDog[-1]:
+                t = t + str(dado).strip()
+            else:
+                t = t + str(dado).strip() + ";"
+        t = t.strip()
 
-
+    with open("perfis.txt", "a") as lista:
+        lista.write(f"\n{generateId()};{t}")
