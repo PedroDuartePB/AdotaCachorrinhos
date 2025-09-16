@@ -2,6 +2,7 @@
 #template de perfil dos dog:
 #ID;Nome;Raça;Idade;Sexo
 
+
 def getDadosCachorro():
     """Apresenta a lista completa dos cachorros disponiveis
     ordenando atraves de categorias"""
@@ -10,6 +11,12 @@ def getDadosCachorro():
         for linha in lista:
             content.append(linha.strip().split(';'))
         return content
+
+
+def getCachorroPerfil():
+    """Busca o perfil de um cachorro pelo nome ou id do cadastro"""
+    with open("perfis.txt", 'r' ) as lista:
+        lista.readline()
 
 def generateId():
     id = 0
@@ -31,4 +38,3 @@ def cadastraNewCachorro(newDog:list):
 
     with open("perfis.txt", "a") as lista:
         lista.write(f"\n{generateId()};{t}")
-
