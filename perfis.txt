@@ -1,0 +1,2 @@
+luciano;1;labrador;2;M;Do balacobaco
+marcela;2;shintsu;4;F;lacinho
