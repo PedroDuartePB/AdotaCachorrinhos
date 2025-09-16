@@ -37,7 +37,7 @@ def interfaceCaes():
 
     if tentativa.lower() in ["não", "n"]:
         print("Cão cadastado, voltando ao menu principal.")
-        return [nome, raca, idade, sexo]
+        return {"nome":nome, "raca":raca, "idade":idade, "sexo":sexo}
     else:
         interfaceCaes()
 
