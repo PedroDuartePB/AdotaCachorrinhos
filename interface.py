@@ -40,7 +40,7 @@ def interfaceCaes():
         return {"nome":nome, "raca":raca, "idade":idade, "sexo":sexo}
     else:
         interfaceCaes()
-
+ 
 def interfaceAdocao():
     print("+------------------------------------------+")
     print("|          ❤️ Adotar um Amigo ❤️          |")
@@ -52,6 +52,10 @@ def interfaceAdocao():
     print("|                                          |")
     print("|                                          |")
     print("+------------------------------------------+")
+    
+
+def interfaceCadastro():
+    return "oi"
 
 def interfaceSaida():
     print("+------------------------------------------+")
@@ -62,3 +66,4 @@ def interfaceSaida():
     print("|      melhor amigo em breve.              |")
     print("|                                          |")
     print("+------------------------------------------+")
+
