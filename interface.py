@@ -41,6 +41,18 @@ def interfaceCaes():
     else:
         interfaceCaes()
 
+def interfaceAdocao():
+    print("+------------------------------------------+")
+    print("|          ❤️ Adotar um Amigo ❤️          |")
+    print("+------------------------------------------+")
+    print("|                                          |")
+    print("|  Pronto para encontrar seu parceiro?     |")
+    print("|  Qual cão você gostaria de adotar?       |")
+    print("|                                          |")
+    print("|                                          |")
+    print("|                                          |")
+    print("+------------------------------------------+")
+
 def interfaceSaida():
     print("+------------------------------------------+")
     print("|                                          |")
