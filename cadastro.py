@@ -26,15 +26,28 @@ def generateId():
     return id+1
 
 
-def cadastraNewCachorro(newDog:list):
-    t = ''
-    if newDog:
-        for dado in newDog:
-            if dado == newDog[-1]:
-                t = t + str(dado).strip()
-            else:
-                t = t + str(dado).strip() + ";"
-        t = t.strip()
-
+def cadastraNewCachorro(newDog:dict):
     with open("perfis.txt", "a") as lista:
-        lista.write(f"\n{generateId()};{t}")
+        lista.write(f"\n{generateId()};")
+        for key in newDog:
+            if key != "sexo":
+                lista.write(f"{newDog[key]};")
+            else:
+                lista.write(f"{newDog[key]}")
+
+def atualizarPerfil(id:int, dados:str):
+    newData = ''
+    with open("perfis.txt", "r+") as lista:
+        perfil = lista.readline((id-1))
+        for dado in perfil:
+            change = input(f"Gostaria de alterar {dados}? [S/N] >> ")
+            if change in ['s', 'sim', '1']:
+                if dado == perfil[-1]:
+                    newData = newData + str(dado).strip()
+                else:
+                    newData = newData + str(dado).strip() + ";"
+
+        newData = newData.strip()
+        lista[(id-1)].write(f"\n{generateId()};{newData}")
+
+cadastraNewCachorro({"nome":"Princesa", "raça":"pitbul", "idade":"2", "sexo":"F"})
