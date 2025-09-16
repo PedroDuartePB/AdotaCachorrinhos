@@ -11,7 +11,7 @@ def getDadosCachorro():
             content.append(linha.strip().split(';'))
         return content
 
-def getId():
+def generateId():
     id = 0
     with open("perfis.txt", "r") as lista:
         for lines in lista:
@@ -23,10 +23,12 @@ def cadastraNewCachorro(newDog:list):
     t = ''
     if newDog:
         for dado in newDog:
-            t = t + str(dado).strip()
+            if dado == newDog[-1]:
+                t = t + str(dado).strip()
+            else:
+                t = t + str(dado).strip() + ";"
         t = t.strip()
 
     with open("perfis.txt", "a") as lista:
-        lista.write(f"\n{getId()}{t}")
+        lista.write(f"\n{generateId()};{t}")
 
-cadastraNewCachorro(["marcio", "caramelo", "2", "M"])
