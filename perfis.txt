@@ -1,2 +1,3 @@
-luciano;1;labrador;2;M;Do balacobaco
-marcela;2;shintsu;4;F;lacinho
+#ID;Nome;Raça;Idade;Sexo
+1;luciano;labrador;2;M
+2;marcela;shintsu;4;F
