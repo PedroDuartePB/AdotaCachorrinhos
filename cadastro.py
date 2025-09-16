@@ -35,17 +35,15 @@ def cadastraNewCachorro(newDog:dict):
             else:
                 lista.write(f"{newDog[key]}")
 
-def atualizarPerfil(id:int, dados:str):
-    newData = ''
-    with open("perfis.txt", "r+") as lista:
-        perfil = lista.readline((id-1))
-        for dado in perfil:
-            change = input(f"Gostaria de alterar {dados}? [S/N] >> ")
-            if change in ['s', 'sim', '1']:
-                if dado == perfil[-1]:
-                    newData = newData + str(dado).strip()
-                else:
-                    newData = newData + str(dado).strip() + ";"
+def atualizarPerfil(id:int):
+    dados = {"nome": "", "raça": "", "idade": "", "sexo": ""}
 
-        newData = newData.strip()
-        lista[(id-1)].write(f"\n{generateId()};{newData}")
+
+    with open("perfis.txt", "w+") as lista:
+        lista.write(f"\n{generateId()};")
+        for key in dados:
+            if key != "sexo":
+                lista.write(f"{dados[key]};")
+            else:
+                lista.write(f"{dados[key]}")
+        
