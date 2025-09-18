@@ -62,15 +62,18 @@ def generateId() -> int:
             id += 1
     return id
 
+def adotarCachorro(id:str=None) -> None:
+    """Imprime os dados do cachorrinho a ser adotdo e remove ele da base de cachorros disponíveis para adoção."""
 
+    adotado = getCachorroPerfil(None,None,None,None,id)[0]
+    print(adotado)
+    print("|         Aproveite seu novo Amigo         |")
+    print(f"| Nome: {adotado[-4]}")
+    print(f"| Raça: {adotado[-3]}")
+    print(f"| Idade: {adotado[-2]}")
+    print(f"| Sexo: {adotado[-1]}")
 
-
-def makeBackup() -> None:
-        pass
-
-
-def forceRollBack() -> None:
-    pass
+    deletaCadastro(adotado[0])
 
 
 def deletaCadastro(id:str=None) -> None:
@@ -95,6 +98,13 @@ def deletaCadastro(id:str=None) -> None:
 
 
 #talvez um dia seja possivel implementar isso aqui
+def makeBackup() -> None:
+        pass
+
+
+def forceRollBack() -> None:
+    pass
+
 def atualizarPerfil(id:int):
     dados = {"nome": "", "raça": "", "idade": "", "sexo": ""}
 
