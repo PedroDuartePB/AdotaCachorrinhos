@@ -80,11 +80,13 @@ def deletaCadastro(id:str=None) -> None:
 
 
     for dados in backup:
-        if dados[0] != id:
+        if int(dados[0]) < int(id):
             l = f"{dados[-5]};{dados[-4]};{dados[-3]};{dados[-2]};{dados[-1]}\n"
             newData.append(l)
-   
-    makeBackup()
+        elif int(dados[0]) > int(id):
+            l = f"{int(dados[-5])-1};{dados[-4]};{dados[-3]};{dados[-2]};{dados[-1]}\n"
+            newData.append(l)
+
     with open("perfis.txt", "w") as lista:
         pass
    
