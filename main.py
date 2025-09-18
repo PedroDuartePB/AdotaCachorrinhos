@@ -11,7 +11,7 @@ while rodando:
       interface.interfaceAdocao()
       continue
    elif resultado == 3:
-      interface.interfaceRemovercao()
+      interface.interfaceRemoverCao()
       continue
    elif resultado == 4:
       interface.interfaceSaida()
