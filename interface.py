@@ -52,10 +52,33 @@ def interfaceAdocao():
     print("|                                          |")
     print("|                                          |")
     print("+------------------------------------------+")
-    
 
-def interfaceCadastro():
-    return "oi"
+def interfaceRemoverCao():
+    print("+------------------------------------------+")
+    print("|  🗑️ Remover um Cão do Cadastro 🗑️      |")
+    print("+------------------------------------------+")
+    print("|                                          |")
+    print("|  Digite o nome do cão que deseja remover |")
+    print("|  e confirme para deletá-lo do sistema.   |")
+    print("|                                          |")
+    print("|  [1] ID do cão a ser removido:           |")
+    print("|                                          |")
+    print("|  [2] Voltar ao menu principal            |")
+    print("|                                          |")
+    print("+------------------------------------------+")
+
+    opcao = input("Digite sua opção: ")
+
+    if opcao == "2":
+        interfacePrincipal()
+    elif opcao == "1":
+        print("")
+        id = input("Digite o ID do cão para o remover: ")
+        return id
+    else:
+        print("Opção inválida, digite novamente")
+        print("")
+        interfaceRemoverCao()
 
 def interfaceSaida():
     print("+------------------------------------------+")
@@ -66,4 +89,3 @@ def interfaceSaida():
     print("|      melhor amigo em breve.              |")
     print("|                                          |")
     print("+------------------------------------------+")
-
