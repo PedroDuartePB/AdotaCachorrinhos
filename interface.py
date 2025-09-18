@@ -1,3 +1,5 @@
+import cadastro
+
 def interfacePrincipal():
     """
     Exibe o menu principal do programa de adoção.
@@ -37,11 +39,13 @@ def interfaceCaes():
 
     if tentativa.lower() in ["não", "n"]:
         print("Cão cadastado, voltando ao menu principal.")
-        return {"nome":nome, "raca":raca, "idade":idade, "sexo":sexo}
+        cadastro.cadastraNewCachorro({"nome":nome, "raca":raca, "idade":idade, "sexo":sexo})
     else:
         interfaceCaes()
  
 def interfaceAdocao():
+    lista = cadastro.getDadosCachorro()
+
     print("+------------------------------------------+")
     print("|          ❤️ Adotar um Amigo ❤️          |")
     print("+------------------------------------------+")
@@ -49,9 +53,17 @@ def interfaceAdocao():
     print("|  Pronto para encontrar seu parceiro?     |")
     print("|  Qual cão você gostaria de adotar?       |")
     print("|                                          |")
-    print("|                                          |")
+    for item in lista:
+        print(f"| [{item[0]}] Nome: {item[1]} Raça: {item[2]}\
+              \n|     Idade: {item[3]} anos Sexo: {item[4]}")
+        print("|                                          |")
     print("|                                          |")
     print("+------------------------------------------+")
+
+    matricula = input("Digite o id [n] do cão: ")
+
+
+    cadastro.matricula
 
 def interfaceRemoverCao():
     print("+------------------------------------------+")
@@ -89,3 +101,5 @@ def interfaceSaida():
     print("|      melhor amigo em breve.              |")
     print("|                                          |")
     print("+------------------------------------------+")
+
+interfaceAdocao()
