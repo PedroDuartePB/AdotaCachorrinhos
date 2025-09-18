@@ -1,43 +1,102 @@
 #estou usando ; como separador nos aquivos 
 #template de perfil dos dog:
 #ID;Nome;Raça;Idade;Sexo
-
-
-def getDadosCachorro():
-    """Apresenta a lista completa dos cachorros disponiveis
-    ordenando atraves de categorias"""
-    with open("perfis.txt", 'r') as lista:
-        content = []
-        for linha in lista:
-            content.append(linha.strip().split(';'))
-        return content
-
-
-def getCachorroPerfil():
-    """Busca o perfil de um cachorro pelo nome ou id do cadastro"""
-    with open("perfis.txt", 'r' ) as lista:
-        lista.readline()
-
-def generateId():
-    id = 0
-    with open("perfis.txt", "r") as lista:
-        for lines in lista:
-            id += 1
-    return id+1
-
-
-def cadastraNewCachorro(newDog:dict):
+def cadastraNewCachorro(newDog:dict) -> None:
+    """Adiciona um novo perfil de um cachorro na "base de dados", altera diretamente o texto"""
     with open("perfis.txt", "a") as lista:
-        lista.write(f"\n{generateId()};")
+        lista.write(f"{generateId()};")
         for key in newDog:
             if key != "sexo":
                 lista.write(f"{newDog[key]};")
             else:
-                lista.write(f"{newDog[key]}")
+                lista.write(f"{newDog[key]}\n")
 
+
+def getDadosCachorro() -> list:
+    """Retorna a lista completa dos cachorros cadastrados pela ordem da matricula"""
+    with open("perfis.txt", 'r') as lista:
+        content = []
+        for linha in lista:
+            content.append(linha.strip().split(';'))        
+        return content
+
+
+def getCachorroPerfil(nome:str=None, raça:str=None, idade:str=None,\
+                        sexo:str=None, id:str=None) -> list:
+    """Retorna uma lista dos perfis de cachorros que atendem certos requisitos.
+    \nParametros devem ser recebidos como string e o programa verifica se estes existem.
+    \npesquisa nome ; possui raça ; possui idade até x ; possui sexo x ; possui id == x"""
+    perfis = getDadosCachorro()
+    busca = []
+    if id == None and nome == None and raça == None and idade == None and sexo == None:
+        busca = getDadosCachorro()
+    else:
+        for p in perfis:
+            if id:
+                if p[0] == id:
+                    print(id)
+                    busca.append(p)
+            elif nome:
+                if nome in p[1]:
+                    busca.append(p)
+            elif raça:
+                if p[2] == raça:
+                    busca.append(p)
+            elif idade:
+                if int(p[3]) <= int(idade):
+                    busca.append(p)
+            elif sexo:
+                if sexo == p[4]:
+                    busca.append(p)
+   
+    if len(busca) == 0:
+        busca.append("  << SEM RESULTADOS DISPONIVEIS >>  ")
+       
+    return busca
+
+
+def generateId() -> int:
+    id = 1
+    with open("perfis.txt", "r") as lista:
+        for lines in lista:
+            id += 1
+    return id
+
+
+
+
+def makeBackup() -> None:
+        pass
+
+
+def forceRollBack() -> None:
+    pass
+
+
+def deletaCadastro(id:str=None) -> None:
+    """""Deleta um cadastro de acordo com o seu número de matricula (informado como str)"""
+    backup = getDadosCachorro()
+    newData = []
+
+
+    for dados in backup:
+        if dados[0] != id:
+            l = f"{dados[-5]};{dados[-4]};{dados[-3]};{dados[-2]};{dados[-1]}\n"
+            newData.append(l)
+   
+    makeBackup()
+    with open("perfis.txt", "w") as lista:
+        pass
+   
+    with open("perfis.txt", "w+") as lista:
+        for perfil in newData:
+            lista.write(perfil)
+
+
+
+#talvez um dia seja possivel implementar isso aqui
 def atualizarPerfil(id:int):
     dados = {"nome": "", "raça": "", "idade": "", "sexo": ""}
-
 
     with open("perfis.txt", "w+") as lista:
         lista.write(f"\n{generateId()};")
