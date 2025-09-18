@@ -63,7 +63,7 @@ def interfaceAdocao():
     matricula = input("Digite o id [n] do cão: ")
 
 
-    cadastro.matricula
+    cadastro.adotarCachorro(matricula.strip())
 
 def interfaceRemoverCao():
     print("+------------------------------------------+")
@@ -86,7 +86,7 @@ def interfaceRemoverCao():
     elif opcao == "1":
         print("")
         id = input("Digite o ID do cão para o remover: ")
-        return id
+        cadastro.deletaCadastro(id.strip())
     else:
         print("Opção inválida, digite novamente")
         print("")
@@ -101,5 +101,3 @@ def interfaceSaida():
     print("|      melhor amigo em breve.              |")
     print("|                                          |")
     print("+------------------------------------------+")
-
-interfaceAdocao()
