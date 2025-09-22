@@ -35,9 +35,9 @@ def interfaceCaes():
     print("|                                          |")
     print("+------------------------------------------+")
     print("")
-    tentativa = input("Você deseja rescrever os dados? S/N ")
+    tentativa = input("Você confirma as alterações? S/N ")
 
-    if tentativa.lower() in ["não", "n"]:
+    if tentativa.lower() in ["sim", "s"]:
         print("Cão cadastado, voltando ao menu principal.")
         cadastro.cadastraNewCachorro({"nome":nome, "raca":raca, "idade":idade, "sexo":sexo})
     else:
