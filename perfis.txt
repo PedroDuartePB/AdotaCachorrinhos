@@ -1,5 +1,6 @@
-1;luciano;labrador;2;M
-2;marcela;shintsu;4;F
-3;princesa;pitbull;1/2;F
-4;marcio;caramelo;2;M
-5;pamela;golden;4;F
+1;Paulo;Pibull ;3;M
+2;Mario;Pinscher ;1 ;M
+3;Alice;Golden;1;F
+4;Amelia;Cane Corso ;12;F
+5;Barbosinha;Border Collier ;2;M
+6;Urubu;Caramelo;18;M

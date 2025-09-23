@@ -40,8 +40,6 @@ def interfaceCaes():
     if tentativa.lower() in ["sim", "s"]:
         print("Cão cadastado, voltando ao menu principal.")
         cadastro.cadastraNewCachorro({"nome":nome, "raca":raca, "idade":idade, "sexo":sexo})
-    else:
-        interfaceCaes()
  
 def interfaceAdocao():
     lista = cadastro.getDadosCachorro()
