@@ -17,7 +17,7 @@ def interfacePrincipal():
     print("|                                          |")
     print("+------------------------------------------+")
 
-    opcao = input("Digite o número da sua opção: ")
+    opcao = int(input("Digite o número da sua opção: "))
     return opcao
 
 
@@ -30,14 +30,14 @@ def interfaceCaes():
     print("|                                          |")
     nome = input("|[1] Qual o nome do cachorro? >> ")
     raca = input("|[2] Qual a Raca?             >> ")
-    idade = input("|[3] Qual a Idade             >> ")
+    idade = input("|[3] Qual a Idade em anos?    >> ")
     sexo = input("|[4] Qual o Sexo?             >> ")
     print("|                                          |")
     print("+------------------------------------------+")
     print("")
-    tentativa = input("Você deseja rescrever os dados? S/N ")
+    tentativa = input("Você confirma as alterações? S/N ")
 
-    if tentativa.lower() in ["não", "n"]:
+    if tentativa.lower() in ["sim", "s"]:
         print("Cão cadastado, voltando ao menu principal.")
         cadastro.cadastraNewCachorro({"nome":nome, "raca":raca, "idade":idade, "sexo":sexo})
     else:
