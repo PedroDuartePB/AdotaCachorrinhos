@@ -1,3 +1,5 @@
 1;luciano;labrador;2;M
 2;marcela;shintsu;4;F
 3;princesa;pitbull;1/2;F
+4;marcio;caramelo;2;M
+5;pamela;golden;4;F
