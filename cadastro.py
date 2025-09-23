@@ -67,11 +67,12 @@ def adotarCachorro(id:str=None) -> None:
 
     adotado = getCachorroPerfil(None,None,None,None,id)[0]
     print(adotado)
-    print("|         Aproveite seu novo Amigo         |")
+    print("|--------Aproveite seu novo Amigo----------|")
     print(f"| Nome: {adotado[-4]}")
     print(f"| Raça: {adotado[-3]}")
     print(f"| Idade: {adotado[-2]}")
     print(f"| Sexo: {adotado[-1]}")
+    print("|------------------------------------------|")
 
     deletaCadastro(adotado[0])
 
