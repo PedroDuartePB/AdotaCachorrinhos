@@ -28,15 +28,15 @@ def interfaceCaes():
     print("|                                          |")
     print("|  Adicione um novo amigo para adoção!     |")
     print("|                                          |")
-    nome = input("|[1] Qual o nome do cachorro? >> ")
-    raca = input("|[2] Qual a Raca?             >> ")
+    nome = input("|[1] Qual o nome do cachorro? >> ").strip()
+    raca = input("|[2] Qual a Raca?             >> ").strip()
     print("|[3] Qual a Idade em anos?              ")
-    idade = input("|[Digite meses como uma fração x/12] >> ")
-    sexo = input("|[4] Qual o Sexo?             >> ")
+    idade = input("|[Digite meses como uma fração x/12] >> ").strip()
+    sexo = input("|[4] Qual o Sexo?             >> ").strip()
     print("|                                          |")
     print("+------------------------------------------+")
     print("")
-    tentativa = input("Você confirma as alterações? S/N ")
+    tentativa = input("Você confirma as alterações? S/N ").strip()
 
     if tentativa.lower() in ["sim", "s"]:
         print("Cão cadastado, voltando ao menu principal.")
@@ -69,11 +69,11 @@ def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
         elif matricula.lower() in ['p', 'pesquisa']:
             busca = {'nome':"", 'raça':"", 'idade':"", 'sexo':""}
             for key in busca:
-                p = input(f"| Preferência de {key} [Enter para pular]:  |\n")
+                p = input(f"| Preferência de {key} [Enter para pular]:  |\n").strip()
                 if p == None:
                     busca[key] = '_'
                 else:
-                    busca[key] = p.strip()
+                    busca[key] = p.lower()
 
             lista = cadastro.getCachorroPerfil(busca['nome'], busca['raça'],
                                                busca['idade'], busca['sexo'], None)
