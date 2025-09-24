@@ -5,16 +5,16 @@ while rodando:
    resultado = interface.interfacePrincipal()
 
    match resultado:
-      case 1:
+      case '1':
          interface.interfaceCaes()
          continue
-      case 2:
+      case '2':
          interface.interfaceAdocao()
          continue
-      case 3:
+      case '3':
          interface.interfaceRemoverCao()
          continue
-      case 4:
+      case '4':
          interface.interfaceSaida()
          rodando = False
       case _:
