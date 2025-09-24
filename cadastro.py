@@ -11,7 +11,7 @@ def cadastraNewCachorro(newDog:dict) -> None:
             if key != "sexo":
                 lista.write(f"{newDog[key].strip()};")
             else:
-                lista.write(f"{newDog[key].strip().upper()}\n")
+                lista.write(f"{newDog[key].strip()}\n")
 
 
 def getDadosCachorro() -> list:
@@ -42,7 +42,7 @@ def getCachorroPerfil(nome:str=None, raça:str=None, idade:str=None,\
                 if nome in p[1]:
                     busca.append(p)
             elif raça:
-                if p[2].strip().lower() == raça.lower():
+                if p[2].lower() == raça.lower():
                     busca.append(p)
             elif idade:
                 if genIdade(p[3]) <= genIdade(idade):
