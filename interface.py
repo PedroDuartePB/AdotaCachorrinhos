@@ -46,7 +46,7 @@ def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
                         sexo:str=None, id:str=None):
     matricula = 'start'
     lista = cadastro.getDadosCachorro()
-    while matricula not in ["0", '']:
+    while matricula not in ["0", '', '[0]':
         print("+------------------------------------------+")
         print("|          ❤️ Adotar um Amigo ❤️          |")
         print("+------------------------------------------+")
@@ -64,7 +64,7 @@ def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
         print("+------------------------------------------+")
 
         matricula = input().strip()
-        if matricula in ['0']:
+        if matricula in ['0', '', '[0]']:
             print(" ")
         elif matricula.lower() in ['p', 'pesquisa']:
             busca = {'nome':"", 'raça':"", 'idade':"", 'sexo':""}
