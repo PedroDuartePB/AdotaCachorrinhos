@@ -47,21 +47,24 @@ def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
     matricula = 'start'
     lista = cadastro.getDadosCachorro()
     while matricula not in ["0", '', '[0]']:
-        print("+------------------------------------------+")
-        print("|          ❤️ Adotar um Amigo ❤️          |")
-        print("+------------------------------------------+")
-        print("|                                          |")
-        print("|  Pronto para encontrar seu parceiro?     |")
-        print("|  Qual cão você gostaria de adotar?       |")
-        print("|                                          |")
-        for item in lista:
-            print(f"| [{item[0]}] Nome: {item[1]} Raça: {item[2]}\
-                \n|     Idade: {item[3]} anos Sexo: {item[4]}")
-        print("|                                          |")
-        print("| Digite o id [n] do cão:                  |")
-        print("| Digite P para pesquisa inteligente       |")
-        print("| [0] voltar ao menu                       |")
-        print("+------------------------------------------+")
+        if lista[0] == "  << SEM RESULTADOS DISPONIVEIS >>  ":
+            print(lista[0])
+        else:
+            print("+------------------------------------------+")
+            print("|          ❤️ Adotar um Amigo ❤️          |")
+            print("+------------------------------------------+")
+            print("|                                          |")
+            print("|  Pronto para encontrar seu parceiro?     |")
+            print("|  Qual cão você gostaria de adotar?       |")
+            print("|                                          |")
+            for item in lista:
+                print(f"| [{item[0]}] Nome: {item[1]} Raça: {item[2]}\
+                    \n|     Idade: {item[3]} anos Sexo: {item[4]}")
+            print("|                                          |")
+            print("| Digite o id [n] do cão:                  |")
+            print("| Digite P para pesquisa inteligente       |")
+            print("| [0] voltar ao menu                       |")
+            print("+------------------------------------------+")
 
         matricula = input().strip()
         if matricula in ['0', '', '[0]']:
@@ -73,7 +76,7 @@ def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
                 if p == None:
                     busca[key] = '_'
                 else:
-                    busca[key] = p.lower()
+                    busca[key] = p
 
             lista = cadastro.getCachorroPerfil(busca['nome'], busca['raça'],
                                                busca['idade'], busca['sexo'], None)
@@ -121,4 +124,3 @@ def interfaceSaida():
     print("|      melhor amigo em breve.              |")
     print("|                                          |")
     print("+------------------------------------------+")
-
