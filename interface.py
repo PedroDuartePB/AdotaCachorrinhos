@@ -1,4 +1,5 @@
 import cadastro
+from time import sleep
 
 def interfacePrincipal():
     """
@@ -16,7 +17,6 @@ def interfacePrincipal():
     print("|[4] Sair                                  |")
     print("|                                          |")
     print("+------------------------------------------+")
-
     opcao = int(input("Digite o número da sua opção: "))
     return opcao
 
@@ -44,11 +44,9 @@ def interfaceCaes():
  
 def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
                         sexo:str=None, id:str=None):
-    matricula = ''
+    matricula = 'start'
     lista = cadastro.getDadosCachorro()
-
     while matricula not in ["0", '']:
-        
         print("+------------------------------------------+")
         print("|          ❤️ Adotar um Amigo ❤️          |")
         print("+------------------------------------------+")
@@ -59,17 +57,16 @@ def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
         for item in lista:
             print(f"| [{item[0]}] Nome: {item[1]} Raça: {item[2]}\
                 \n|     Idade: {item[3]} anos Sexo: {item[4]}")
-            print("|                                          |")
         print("|                                          |")
         print("| Digite o id [n] do cão:                  |")
         print("| Digite P para pesquisa inteligente       |")
         print("| [0] voltar ao menu                       |")
         print("+------------------------------------------+")
 
-        matricula = input().lower()
-        if matricula.strip() in ['0']:
+        matricula = input().strip()
+        if matricula in ['0']:
             print(" ")
-        elif matricula.strip() in ['p', 'pesquisa']:
+        elif matricula.lower() in ['p', 'pesquisa']:
             busca = {'nome':"", 'raça':"", 'idade':"", 'sexo':""}
             for key in busca:
                 p = input(f"| Preferência de {key} [Enter para pular]:  |\n")
@@ -82,8 +79,7 @@ def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
                                                busca['idade'], busca['sexo'], None)
         
         else:
-            cadastro.adotarCachorro(matricula.strip())
-
+            cadastro.adotarCachorro(matricula)
 
 def interfaceRemoverCao():
     print("+------------------------------------------+")
@@ -109,8 +105,10 @@ def interfaceRemoverCao():
         cadastro.deletaCadastro(id.strip())
     else:
         print("Opção inválida, digite novamente")
+        sleep(1)
         print("")
         interfaceRemoverCao()
+
 
 def interfaceSaida():
     print("+------------------------------------------+")

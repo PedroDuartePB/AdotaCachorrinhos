@@ -1,3 +1,5 @@
+from time import sleep
+
 #estou usando ; como separador nos aquivos 
 #template de perfil dos dog:
 #ID;Nome;Raça;Idade;Sexo
@@ -100,14 +102,18 @@ def adotarCachorro(id:str=None) -> None:
     """Imprime os dados do cachorrinho a ser adotdo e remove ele da base de cachorros disponíveis para adoção."""
 
     adotado = getCachorroPerfil(None,None,None,None,id)[0]
-    print(adotado)
-    print("|         Aproveite seu novo Amigo         |")
-    print(f"| Nome: {adotado[-4]}")
-    print(f"| Raça: {adotado[-3]}")
-    print(f"| Idade: {adotado[-2]}")
-    print(f"| Sexo: {adotado[-1]}")
+    if adotado == "  << SEM RESULTADOS DISPONIVEIS >>  ":
+        print(adotado)
+        sleep(1)
+    else:
+        print("|         Aproveite seu novo Amigo         |")
+        print(f"| Nome: {adotado[-4]}")
+        print(f"| Raça: {adotado[-3]}")
+        print(f"| Idade: {adotado[-2]}")
+        print(f"| Sexo: {adotado[-1]}")
 
-    deletaCadastro(adotado[0])
+        deletaCadastro(adotado[0])
+        sleep(2)
 
 
 def deletaCadastro(id:str=None) -> None:
@@ -117,8 +123,11 @@ def deletaCadastro(id:str=None) -> None:
 
 
     for dados in backup:
-        if dados[0] != id:
+        if int(dados[0]) < int(id):
             l = f"{dados[-5]};{dados[-4]};{dados[-3]};{dados[-2]};{dados[-1]}\n"
+            newData.append(l)
+        elif int(dados[0]) > int(id):
+            l = f"{int(dados[-5])-1};{dados[-4]};{dados[-3]};{dados[-2]};{dados[-1]}\n"
             newData.append(l)
 
     with open("perfis.txt", "w") as lista:
