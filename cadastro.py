@@ -8,6 +8,8 @@ def cadastraNewCachorro(newDog:dict) -> None:
         for key in newDog:
             if key != "sexo":
                 lista.write(f"{newDog[key]};")
+            elif key == "idade":
+                lista.write(f"{genIdade(newDog[key])};")
             else:
                 lista.write(f"{newDog[key]}\n")
 
@@ -62,10 +64,9 @@ def generateId() -> int:
             id += 1
     return id
 
-def genIdade(idade):
+def genIdade(idade:str):
     try:
-        float(idade)
-        newIdade = idade
+        newIdade = float(idade)
     except ValueError:
         match idade:
             case '1/12':

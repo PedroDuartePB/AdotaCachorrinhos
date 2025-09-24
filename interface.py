@@ -45,11 +45,10 @@ def interfaceCaes():
 def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
                         sexo:str=None, id:str=None):
     matricula = ''
-    lista = []
+    lista = cadastro.getDadosCachorro()
 
-    while matricula != "0":
-        lista = cadastro.getDadosCachorro()
-
+    while matricula not in ["0", '']:
+        
         print("+------------------------------------------+")
         print("|          ❤️ Adotar um Amigo ❤️          |")
         print("+------------------------------------------+")
