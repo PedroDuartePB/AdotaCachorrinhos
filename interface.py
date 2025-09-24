@@ -78,7 +78,8 @@ def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
                 else:
                     busca[key] = p.strip()
             
-            lista = cadastro.getCachorroPerfil(busca['nome'], busca['raça'], busca['idade'], busca['sexo'], None)
+            lista = cadastro.getCachorroPerfil(busca['nome'], busca['raça'],
+                                               busca['idade'], busca['sexo'], None)
         
         else:
             cadastro.adotarCachorro(matricula.strip())
@@ -86,7 +87,7 @@ def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
 
 def interfaceRemoverCao():
     print("+------------------------------------------+")
-    print("|  🗑️ Remover um Cão do Cadastro 🗑️      |")
+    print("|  🗑️ Remover um Cão do Cadastro 🗑️       |")
     print("+------------------------------------------+")
     print("|                                          |")
     print("|  Digite o nome do cão que deseja remover |")
@@ -114,9 +115,10 @@ def interfaceRemoverCao():
 def interfaceSaida():
     print("+------------------------------------------+")
     print("|                                          |")
-    print("|      🐾 Obrigado por nos visitar! 🐾     |")
+    print("|      🐾 Obrigado por nos visitar! 🐾    |")
     print("|                                          |")
     print("|    Esperamos que encontre seu novo       |")
     print("|      melhor amigo em breve.              |")
     print("|                                          |")
     print("+------------------------------------------+")
+
