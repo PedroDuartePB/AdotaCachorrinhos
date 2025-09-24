@@ -74,12 +74,13 @@ def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
                     busca[key] = '_'
                 else:
                     busca[key] = p.strip()
-            
+
             lista = cadastro.getCachorroPerfil(busca['nome'], busca['raça'],
                                                busca['idade'], busca['sexo'], None)
         
         else:
             cadastro.adotarCachorro(matricula)
+            lista = cadastro.getDadosCachorro()
 
 def interfaceRemoverCao():
     print("+------------------------------------------+")
@@ -97,12 +98,12 @@ def interfaceRemoverCao():
 
     opcao = input("Digite sua opção: ")
 
-    if opcao == "2":
-        interfacePrincipal()
-    elif opcao == "1":
+    if opcao == "1":
         print("")
         id = input("Digite o ID do cão para o remover: ")
         cadastro.deletaCadastro(id.strip())
+    elif opcao == "2":
+        print("")
     else:
         print("Opção inválida, digite novamente")
         sleep(1)
