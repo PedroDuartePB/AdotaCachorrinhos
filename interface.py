@@ -17,7 +17,7 @@ def interfacePrincipal():
     print("|[4] Sair                                  |")
     print("|                                          |")
     print("+------------------------------------------+")
-    opcao = int(input("Digite o número da sua opção: "))
+    opcao = input("Digite o número da sua opção: ")
     return opcao
 
 
