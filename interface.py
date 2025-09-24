@@ -77,7 +77,8 @@ def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
 
             lista = cadastro.getCachorroPerfil(busca['nome'], busca['raça'],
                                                busca['idade'], busca['sexo'], None)
-        
+            sleep(1)
+
         else:
             cadastro.adotarCachorro(matricula)
             lista = cadastro.getDadosCachorro()
