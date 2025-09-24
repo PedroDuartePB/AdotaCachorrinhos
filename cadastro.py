@@ -43,7 +43,7 @@ def getCachorroPerfil(nome:str=None, raça:str=None, idade:str=None,\
                 if p[2] == raça:
                     busca.append(p)
             elif idade:
-                if float(p[3]) <= float(idade):
+                if int(p[3]) <= int(idade):
                     busca.append(p)
             elif sexo:
                 if sexo == p[4]:

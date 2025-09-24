@@ -70,7 +70,7 @@ def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
         if matricula.strip() in ['0']:
             print(" ")
         elif matricula.strip() in ['p', 'pesquisa']:
-            busca = {'nome':None, 'raça':None, 'idade':None, 'sexo':None}
+            busca = {'nome':"", 'raça':"", 'idade':"", 'sexo':""}
             for key in busca:
                 p = input(f"| Preferência de {key} [Enter para pular]:  |\n")
                 if p == None:
@@ -78,7 +78,7 @@ def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
                 else:
                     busca[key] = p.strip()
             
-            lista = cadastro.getCachorroPerfil(busca[nome], busca[raça], busca[idade], busca[sexo], None)
+            lista = cadastro.getCachorroPerfil(busca['nome'], busca['raça'], busca['idade'], busca['sexo'], None)
         
         else:
             cadastro.adotarCachorro(matricula.strip())
