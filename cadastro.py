@@ -9,9 +9,9 @@ def cadastraNewCachorro(newDog:dict) -> None:
         lista.write(f"{generateId()};")
         for key in newDog:
             if key != "sexo":
-                lista.write(f"{newDog[key].strip().lower()};")
+                lista.write(f"{newDog[key].strip()};")
             else:
-                lista.write(f"{newDog[key].strip().lower()}\n")
+                lista.write(f"{newDog[key].strip().upper()}\n")
 
 
 def getDadosCachorro() -> list:
