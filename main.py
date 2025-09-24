@@ -17,6 +17,9 @@ while rodando:
       case '4':
          interface.interfaceSaida()
          rodando = False
+      case '':
+         interface.interfaceSaida()
+         rodando = False
       case _:
          print("OPÇÂO INVALIDA TENTE NOVAMENTE")
          continue
