@@ -1,4 +1,5 @@
 import cadastro
+from time import sleep
 
 def interfacePrincipal():
     """
@@ -16,7 +17,6 @@ def interfacePrincipal():
     print("|[4] Sair                                  |")
     print("|                                          |")
     print("+------------------------------------------+")
-
     opcao = int(input("Digite o número da sua opção: "))
     return opcao
 
@@ -30,7 +30,8 @@ def interfaceCaes():
     print("|                                          |")
     nome = input("|[1] Qual o nome do cachorro? >> ")
     raca = input("|[2] Qual a Raca?             >> ")
-    idade = input("|[3] Qual a Idade em anos?    >> ")
+    print("|[3] Qual a Idade em anos?              ")
+    idade = input("|[Digite meses como uma fração x/12] >> ")
     sexo = input("|[4] Qual o Sexo?             >> ")
     print("|                                          |")
     print("+------------------------------------------+")
@@ -41,31 +42,48 @@ def interfaceCaes():
         print("Cão cadastado, voltando ao menu principal.")
         cadastro.cadastraNewCachorro({"nome":nome, "raca":raca, "idade":idade, "sexo":sexo})
  
-def interfaceAdocao():
+def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
+                        sexo:str=None, id:str=None):
+    matricula = 'start'
     lista = cadastro.getDadosCachorro()
-
-    print("+------------------------------------------+")
-    print("|          ❤️ Adotar um Amigo ❤️          |")
-    print("+------------------------------------------+")
-    print("|                                          |")
-    print("|  Pronto para encontrar seu parceiro?     |")
-    print("|  Qual cão você gostaria de adotar?       |")
-    print("|                                          |")
-    for item in lista:
-        print(f"| [{item[0]}] Nome: {item[1]} Raça: {item[2]}\
-              \n|     Idade: {item[3]} anos Sexo: {item[4]}")
+    while matricula not in ["0", '']:
+        print("+------------------------------------------+")
+        print("|          ❤️ Adotar um Amigo ❤️          |")
+        print("+------------------------------------------+")
         print("|                                          |")
-    print("|                                          |")
-    print("+------------------------------------------+")
+        print("|  Pronto para encontrar seu parceiro?     |")
+        print("|  Qual cão você gostaria de adotar?       |")
+        print("|                                          |")
+        for item in lista:
+            print(f"| [{item[0]}] Nome: {item[1]} Raça: {item[2]}\
+                \n|     Idade: {item[3]} anos Sexo: {item[4]}")
+        print("|                                          |")
+        print("| Digite o id [n] do cão:                  |")
+        print("| Digite P para pesquisa inteligente       |")
+        print("| [0] voltar ao menu                       |")
+        print("+------------------------------------------+")
 
-    matricula = input("Digite o id [n] do cão: ")
-
-
-    cadastro.adotarCachorro(matricula.strip())
+        matricula = input().strip()
+        if matricula in ['0']:
+            print(" ")
+        elif matricula.lower() in ['p', 'pesquisa']:
+            busca = {'nome':"", 'raça':"", 'idade':"", 'sexo':""}
+            for key in busca:
+                p = input(f"| Preferência de {key} [Enter para pular]:  |\n")
+                if p == None:
+                    busca[key] = '_'
+                else:
+                    busca[key] = p.strip()
+            
+            lista = cadastro.getCachorroPerfil(busca['nome'], busca['raça'],
+                                               busca['idade'], busca['sexo'], None)
+        
+        else:
+            cadastro.adotarCachorro(matricula)
 
 def interfaceRemoverCao():
     print("+------------------------------------------+")
-    print("|  🗑️ Remover um Cão do Cadastro 🗑️      |")
+    print("|  🗑️ Remover um Cão do Cadastro 🗑️       |")
     print("+------------------------------------------+")
     print("|                                          |")
     print("|  Digite o nome do cão que deseja remover |")
@@ -87,15 +105,18 @@ def interfaceRemoverCao():
         cadastro.deletaCadastro(id.strip())
     else:
         print("Opção inválida, digite novamente")
+        sleep(1)
         print("")
         interfaceRemoverCao()
+
 
 def interfaceSaida():
     print("+------------------------------------------+")
     print("|                                          |")
-    print("|      🐾 Obrigado por nos visitar! 🐾     |")
+    print("|      🐾 Obrigado por nos visitar! 🐾    |")
     print("|                                          |")
     print("|    Esperamos que encontre seu novo       |")
     print("|      melhor amigo em breve.              |")
     print("|                                          |")
     print("+------------------------------------------+")
+
