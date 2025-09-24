@@ -43,7 +43,7 @@ def getCachorroPerfil(nome:str=None, raça:str=None, idade:str=None,\
                 if p[2] == raça:
                     busca.append(p)
             elif idade:
-                if int(p[3]) <= int(idade):
+                if float(p[3]) <= float(idade):
                     busca.append(p)
             elif sexo:
                 if sexo == p[4]:
@@ -66,17 +66,14 @@ def adotarCachorro(id:str=None) -> None:
     """Imprime os dados do cachorrinho a ser adotdo e remove ele da base de cachorros disponíveis para adoção."""
 
     adotado = getCachorroPerfil(None,None,None,None,id)[0]
-    if adotado == "<< SEM RESULTADOS DISPONIVEIS >>":
-        print(adotado)
-    else:
-        print("|--------Aproveite seu novo Amigo----------|")
-        print(f"| Nome: {adotado[-4]}")
-        print(f"| Raça: {adotado[-3]}")
-        print(f"| Idade: {adotado[-2]}")
-        print(f"| Sexo: {adotado[-1]}")
-        print("|------------------------------------------|")
+    print(adotado)
+    print("|         Aproveite seu novo Amigo         |")
+    print(f"| Nome: {adotado[-4]}")
+    print(f"| Raça: {adotado[-3]}")
+    print(f"| Idade: {adotado[-2]}")
+    print(f"| Sexo: {adotado[-1]}")
 
-        deletaCadastro(adotado[0])
+    deletaCadastro(adotado[0])
 
 
 def deletaCadastro(id:str=None) -> None:
@@ -86,11 +83,8 @@ def deletaCadastro(id:str=None) -> None:
 
 
     for dados in backup:
-        if int(dados[0]) < int(id):
+        if dados[0] != id:
             l = f"{dados[-5]};{dados[-4]};{dados[-3]};{dados[-2]};{dados[-1]}\n"
-            newData.append(l)
-        elif int(dados[0]) > int(id):
-            l = f"{int(dados[-5])-1};{dados[-4]};{dados[-3]};{dados[-2]};{dados[-1]}\n"
             newData.append(l)
 
     with open("perfis.txt", "w") as lista:
@@ -99,25 +93,4 @@ def deletaCadastro(id:str=None) -> None:
     with open("perfis.txt", "w+") as lista:
         for perfil in newData:
             lista.write(perfil)
-
-
-
-#talvez um dia seja possivel implementar isso aqui
-def makeBackup() -> None:
-        pass
-
-
-def forceRollBack() -> None:
-    pass
-
-def atualizarPerfil(id:int):
-    dados = {"nome": "", "raça": "", "idade": "", "sexo": ""}
-
-    with open("perfis.txt", "w+") as lista:
-        lista.write(f"\n{generateId()};")
-        for key in dados:
-            if key != "sexo":
-                lista.write(f"{dados[key]};")
-            else:
-                lista.write(f"{dados[key]}")
 

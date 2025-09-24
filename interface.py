@@ -41,27 +41,48 @@ def interfaceCaes():
         print("Cão cadastado, voltando ao menu principal.")
         cadastro.cadastraNewCachorro({"nome":nome, "raca":raca, "idade":idade, "sexo":sexo})
  
-def interfaceAdocao():
-    lista = cadastro.getDadosCachorro()
+def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
+                        sexo:str=None, id:str=None):
+    matricula = ''
+    lista = []
 
-    print("+------------------------------------------+")
-    print("|          ❤️ Adotar um Amigo ❤️          |")
-    print("+------------------------------------------+")
-    print("|                                          |")
-    print("|  Pronto para encontrar seu parceiro?     |")
-    print("|  Qual cão você gostaria de adotar?       |")
-    print("|                                          |")
-    for item in lista:
-        print(f"| [{item[0]}] Nome: {item[1]} Raça: {item[2]}\
-              \n|     Idade: {item[3]} anos Sexo: {item[4]}")
+    while matricula != "0":
+        lista = cadastro.getDadosCachorro()
+
+        print("+------------------------------------------+")
+        print("|          ❤️ Adotar um Amigo ❤️          |")
+        print("+------------------------------------------+")
         print("|                                          |")
-    print("|                                          |")
-    print("+------------------------------------------+")
+        print("|  Pronto para encontrar seu parceiro?     |")
+        print("|  Qual cão você gostaria de adotar?       |")
+        print("|                                          |")
+        for item in lista:
+            print(f"| [{item[0]}] Nome: {item[1]} Raça: {item[2]}\
+                \n|     Idade: {item[3]} anos Sexo: {item[4]}")
+            print("|                                          |")
+        print("|                                          |")
+        print("| Digite o id [n] do cão:                  |")
+        print("| Digite P para pesquisa inteligente       |")
+        print("| [0] voltar ao menu                       |")
+        print("+------------------------------------------+")
 
-    matricula = input("Digite o id [n] do cão: ")
+        matricula = input().lower()
+        if matricula.strip() in ['0']:
+            print(" ")
+        elif matricula.strip() in ['p', 'pesquisa']:
+            busca = {'nome':None, 'raça':None, 'idade':None, 'sexo':None}
+            for key in busca:
+                p = input(f"| Preferência de {key} [Enter para pular]:  |\n")
+                if p == None:
+                    busca[key] = '_'
+                else:
+                    busca[key] = p.strip()
+            
+            lista = cadastro.getCachorroPerfil(busca[nome], busca[raça], busca[idade], busca[sexo], None)
+        
+        else:
+            cadastro.adotarCachorro(matricula.strip())
 
-
-    cadastro.adotarCachorro(matricula.strip())
 
 def interfaceRemoverCao():
     print("+------------------------------------------+")
