@@ -10,8 +10,6 @@ def cadastraNewCachorro(newDog:dict) -> None:
         for key in newDog:
             if key != "sexo":
                 lista.write(f"{newDog[key]};")
-            elif key == "idade":
-                lista.write(f"{genIdade(newDog[key])};")
             else:
                 lista.write(f"{newDog[key]}\n")
 
