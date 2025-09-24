@@ -28,13 +28,13 @@ def getCachorroPerfil(nome:str=None, raça:str=None, idade:str=None,\
     \npesquisa nome ; possui raça ; possui idade até x ; possui sexo x ; possui id == x"""
     perfis = getDadosCachorro()
     busca = []
+
     if id == None and nome == None and raça == None and idade == None and sexo == None:
         busca = getDadosCachorro()
     else:
         for p in perfis:
             if id:
                 if p[0] == id:
-                    print(id)
                     busca.append(p)
             elif nome:
                 if nome in p[1]:
@@ -43,15 +43,15 @@ def getCachorroPerfil(nome:str=None, raça:str=None, idade:str=None,\
                 if p[2] == raça:
                     busca.append(p)
             elif idade:
-                if int(p[3]) <= int(idade):
+                if genIdade(p[3]) <= genIdade(idade):
                     busca.append(p)
             elif sexo:
                 if sexo == p[4]:
                     busca.append(p)
-   
+
     if len(busca) == 0:
         busca.append("  << SEM RESULTADOS DISPONIVEIS >>  ")
-       
+        
     return busca
 
 
@@ -61,6 +61,39 @@ def generateId() -> int:
         for lines in lista:
             id += 1
     return id
+
+def genIdade(idade):
+    try:
+        float(idade)
+        newIdade = idade
+    except ValueError:
+        match idade:
+            case '1/12':
+                newIdade = 0.08
+            case '2/12':
+                newIdade = 0.16
+            case '3/12':
+                newIdade = 0.25
+            case '4/12':
+                newIdade = 0.3
+            case '5/12':
+                newIdade = 0.4
+            case '6/12':
+                newIdade = 0.5
+            case '7/12':
+                newIdade = 0.58
+            case '8/12':
+                newIdade = 0.6
+            case '9/12':
+                newIdade = 0.75
+            case '10/12':
+                newIdade = 0.83
+            case '11/12':
+                newIdade = 0.9
+            case _:
+                newIdade = 0
+    finally:
+        return newIdade
 
 def adotarCachorro(id:str=None) -> None:
     """Imprime os dados do cachorrinho a ser adotdo e remove ele da base de cachorros disponíveis para adoção."""
