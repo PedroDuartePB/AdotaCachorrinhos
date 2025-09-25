@@ -47,6 +47,10 @@ def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
     matricula = 'start'
     lista = cadastro.getDadosCachorro()
     while matricula not in ["0", '']:
+        if lista[0] == "  << SEM RESULTADOS DISPONIVEIS >>  ":
+            print(lista[0])
+            sleep(1)
+            lista = cadastro.getDadosCachorro()
         print("+------------------------------------------+")
         print("|          ❤️ Adotar um Amigo ❤️          |")
         print("+------------------------------------------+")
