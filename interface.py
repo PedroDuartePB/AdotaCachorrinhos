@@ -73,7 +73,7 @@ def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
                 if p == None:
                     busca[key] = None
                 else:
-                    busca[key] = p.lower()
+                    busca[key] = p.upper()
 
             lista = cadastro.getCachorroPerfil(busca['nome'], busca['raça'],
                                                busca['idade'], busca['sexo'], None)
@@ -120,4 +120,3 @@ def interfaceSaida():
     print("|      melhor amigo em breve.              |")
     print("|                                          |")
     print("+------------------------------------------+")
-
