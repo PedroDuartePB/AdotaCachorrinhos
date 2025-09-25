@@ -1,6 +1,5 @@
-1;Paulo;Pitbull;3;M
-2;Mario;Pinscher;1;M
-3;Alice;Golden;1;F
-4;Amelia;Cane Corso;12;F
-5;Barbosinha;Border Collier;2;M
-6;Urubu;Caramelo;18;M
+1;PAULO;PITBULL;3;M
+2;ALICE;GOLDEN;1;F
+3;AMELIA;CANECORSO;12;F
+4;BARBOZINHA;BORDERCOLLIER;2;M
+5;URUBU;CARAMELO;18;M
