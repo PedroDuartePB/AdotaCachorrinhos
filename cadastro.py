@@ -8,6 +8,8 @@ def cadastraNewCachorro(newDog:dict) -> None:
     with open("perfis.txt", "a") as lista:
         lista.write(f"{generateId()};")
         for key in newDog:
+            newDog[key] = newDog[key].strip()
+            newDog[key] = newDog[key].upper()
             if key != "sexo":
                 lista.write(f"{newDog[key]};")
             else:
@@ -39,10 +41,10 @@ def getCachorroPerfil(nome:str=None, raça:str=None, idade:str=None,\
                 if p[0] == id:
                     busca.append(p)
             elif nome:
-                if nome.lower() in p[1].lower():
+                if nome in p[1]:
                     busca.append(p)
             elif raça:
-                if p[2].strip() == raça.strip():
+                if p[2] == raça:
                     busca.append(p)
             elif idade:
                 if genIdade(p[3]) <= genIdade(idade):
