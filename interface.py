@@ -73,7 +73,7 @@ def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
                 if p == None or p == '':
                     busca[key] = '_'
                 else:
-                    busca[key] = p.strip()
+                    busca[key] = p
 
             lista = cadastro.getCachorroPerfil(busca['nome'], busca['raça'],
                                                busca['idade'], busca['sexo'], None)
