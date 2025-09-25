@@ -39,10 +39,10 @@ def getCachorroPerfil(nome:str=None, raça:str=None, idade:str=None,\
                 if p[0] == id:
                     busca.append(p)
             elif nome:
-                if nome.lower() in p[1].lower():
+                if nome in p[1]:
                     busca.append(p)
             elif raça:
-                if raça.strip() == p[2].lower():
+                if p[2] == raça:
                     busca.append(p)
             elif idade:
                 if genIdade(p[3]) <= genIdade(idade):
@@ -134,3 +134,4 @@ def deletaCadastro(id:str=None) -> None:
     with open("perfis.txt", "w+") as lista:
         for perfil in newData:
             lista.write(perfil)
+
