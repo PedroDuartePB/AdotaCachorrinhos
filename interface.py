@@ -71,7 +71,7 @@ def interfaceAdocao(nome:str=None, raça:str=None, idade:str=None,\
             for key in busca:
                 p = input(f"| Preferência de {key} [Enter para pular]:  |\n")
                 if p == None:
-                    busca[key] = '_'
+                    busca[key] = ''
                 else:
                     busca[key] = p.strip()
 
