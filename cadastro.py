@@ -136,4 +136,3 @@ def deletaCadastro(id:str=None) -> None:
     with open("perfis.txt", "w+") as lista:
         for perfil in newData:
             lista.write(perfil)
-
